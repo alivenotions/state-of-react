@@ -1,0 +1,13 @@
+.users {
+  text-align: center;
+}
+
+.users ul li {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  float: left;
+  text-align: center;
+  line-height: 100px;
+  background-color: #eee;
+}
