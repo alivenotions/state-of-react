@@ -1,6 +1,7 @@
 import React from 'react'
 
 import userData from './MOCK_DATA'
+import './User.css'
 
 class User extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class User extends React.Component {
     }
 
     return(
-      <div>
+      <div className="users">
         <ul>
           {users.map(user => (
             <li key={user.id}>{user.first_name}</li>

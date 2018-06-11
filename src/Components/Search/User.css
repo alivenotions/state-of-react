@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.users ul {
+  list-style: none;
+}
+
 .users ul li {
   width: 100px;
   height: 100px;
