@@ -1,15 +1,11 @@
 import React from 'react'
 
-import userData from './MOCK_DATA'
 import './User.css'
 
 class User extends React.Component {
-  state = {
-    users: userData,
-  }
 
   render() {
-    let { users } = this.state
+    let { users } = this.props
     const searchString = this.props.searchString.trim().toLowerCase()
 
     if(searchString.length > 0) {
