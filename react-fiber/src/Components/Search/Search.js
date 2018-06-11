@@ -1,11 +1,9 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 
 import SearchBar from './SearchBar'
 import User from './User'
 import userData from './MOCK_DATA'
-
-const AsyncMode = React.unstable_AsyncMode
 
 class Search extends React.Component {
   state = {
@@ -14,10 +12,20 @@ class Search extends React.Component {
   }
 
   handleChange = event => {
-    event.persist()
-    // ReactDOM.unstable_deferredUpdates(() => 
-    this.setState(state => ({searchString: event.target.value}))
-    // )
+    ReactDOM.flushSync(() => this.setState({searchString: event.target.value},
+      () => {
+        const searchString = event.target.value.trim().toLowerCase()
+        
+        if(searchString.length >= 0) {
+          const users = userData.filter(
+            user => user.first_name.toLowerCase().match(searchString)
+          )
+          // ReactDOM.unstable_deferredUpdates(() => { this.setState({users}) })
+          this.setState({users})
+        }
+      }
+    )
+  )
   }
 
   render() {
@@ -27,9 +35,7 @@ class Search extends React.Component {
           searchString={this.state.searchString}
           handleChange={this.handleChange}
         />
-        {/* <AsyncMode> */}
-          <User searchString={this.state.searchString} users={this.state.users}/>
-        {/* </AsyncMode> */}
+        <User users={this.state.users}/>
       </div>
     )
   }
