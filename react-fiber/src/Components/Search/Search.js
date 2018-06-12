@@ -20,8 +20,8 @@ class Search extends React.Component {
           const users = userData.filter(
             user => user.first_name.toLowerCase().match(searchString)
           )
-          // ReactDOM.unstable_deferredUpdates(() => { this.setState({users}) })
-          this.setState({users})
+          ReactDOM.unstable_deferredUpdates(() => { this.setState({users}) })
+          // this.setState({users})
         }
       }
     )
@@ -30,13 +30,13 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <SearchBar
           searchString={this.state.searchString}
           handleChange={this.handleChange}
         />
         <User users={this.state.users}/>
-      </div>
+      </React.Fragment>
     )
   }
 }
