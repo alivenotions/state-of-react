@@ -7,6 +7,8 @@ const style = {
     width: '90%',
     padding: 5,
     backgroundColor: '#fafafa',
+    borderRadius: '8px',
+    boxShadow: '1.3px 1.3px 1.3px black',
   },
 }
 

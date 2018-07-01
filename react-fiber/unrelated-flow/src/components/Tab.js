@@ -18,8 +18,8 @@ const style = {
     paddingTop: 40,
   },
   active: {
-    backgroundColor: 'tomato',
-    color: '#fff',
+    backgroundColor: 'aquamarine',
+    color: 'red',
   },
 }
 

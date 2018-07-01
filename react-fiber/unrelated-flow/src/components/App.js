@@ -13,7 +13,7 @@ export default class App extends React.Component {
       text: '',
       items: [...new Array(5000)].map((_, i) => ({
         index: i,
-        name: `item:${i}`,
+        name: `Item: ${i}`,
         value: i,
       })),
     }
@@ -28,7 +28,7 @@ export default class App extends React.Component {
       state => ({
         items: state.items.map(item =>
           Object.assign({}, item, {
-            name: `item:${item.value + 1}`,
+            name: `Item: ${item.value + 1}`,
             value: item.value + 1,
           })
         ),
@@ -36,7 +36,9 @@ export default class App extends React.Component {
       () => {
         this.timerId = setTimeout(() => {
           this.state.isAsync
-            ? ReactDOM.unstable_deferredUpdates(() => {this.tick()})
+            ? ReactDOM.unstable_deferredUpdates(() => {
+                this.tick()
+              })
             : this.tick()
         }, 100)
       }
@@ -54,13 +56,9 @@ export default class App extends React.Component {
     const { isAsync, text, items } = this.state
     return (
       <main>
-        <h1>React Fiber Time Slicing Sample</h1>
-        <p>You can switch a rendering mode to Async or Sync.</p>
-        <p>Please try to input text and switch the mode.</p>
-        <p style={{ color: 'red' }}>
-          If you can't get any diferrence between Async mode and Sync mode, you
-          should use CPU throttling on DevTools
-        </p>
+        <h1 style={{ textTransform: 'uppercase', color: 'magenta' }}>
+          My log warehouse
+        </h1>
         <Tab
           isAsync={isAsync}
           onClick={value => this.setState(() => ({ isAsync: value, text: '' }))}
@@ -70,8 +68,9 @@ export default class App extends React.Component {
           value={text}
           onChange={value => this.syncUpdate(() => ({ text: value }))}
         />
+        <h2 style={{ color: 'red' }}>Super heavy magical computation!</h2>
         <h3>
-          Rendering {items.length}items as {isAsync ? 'low' : 'sync'} priority
+          Rendering {items.length} items as {isAsync ? 'low' : 'sync'} priority
         </h3>
         <Items items={items} />
       </main>
