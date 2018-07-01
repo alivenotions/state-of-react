@@ -16,6 +16,7 @@ const Parent = () => (
   <div>
     <h1>Parent</h1>
     <Child />
+    <p>What a wonderful life</p>
   </div>
 )
 
