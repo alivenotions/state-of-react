@@ -56,7 +56,7 @@ export default class App extends React.Component {
     const { isAsync, text, items } = this.state
     return (
       <main>
-        <h1 style={{ textTransform: 'uppercase', color: 'magenta' }}>
+        <h1 style={{ textTransform: 'uppercase', color: '#bcbcbc' }}>
           My log warehouse
         </h1>
         <Tab
